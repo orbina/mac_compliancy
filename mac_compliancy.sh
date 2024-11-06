@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 hostname=$(scutil --get ComputerName)
 username=$USER

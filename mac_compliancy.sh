@@ -3,7 +3,7 @@
 hostname=$(scutil --get ComputerName)
 username=$USER
 date=$(date)
-shasum=$(shasum -a mac_compliancy.sh)
+shasum=$(shasum -a 256 mac_compliancy.sh)
 echo "Hostname: $hostname"
 echo "Username: $username"
 echo "Date and Time: $date"

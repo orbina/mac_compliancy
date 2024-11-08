@@ -6,7 +6,7 @@ date=$(date)
 shasum=$(shasum -a 256 mac_compliancy.sh)
 osname=$(sw_vers -productName)
 osver=$(sw_vers -productVersion)
-cpu=$(sysctl -n machdep.cpu.branding_string)
+cpu=$(sysctl -n machdep.cpu.brand_string)
 vendor=$(system_profiler SPHardwareDataType | awk -F ": " '/Model Name|Model Identifier/{print $2}' | xargs | sed 's/ /, /g')
 
 ip=$(ipconfig getifaddr en0)
@@ -14,7 +14,7 @@ if [ -z "$ip" ]; then
 	ip="Not connected"
 fi
 
-mac=$(ifconfig en0 | awk "/ether/print $2")
+mac=$(ifconfig en0 | awk "/ether/{print $2}")
 if [ -z "mac" ]; then
 	mac="Not available"
 fi

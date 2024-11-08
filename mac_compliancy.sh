@@ -4,7 +4,7 @@ hostname=$(scutil --get ComputerName)
 username=$USER
 date=$(date)
 shasum=$(shasum -a 256 mac_compliancy.sh)
-osname=$(sw_vers -productName)
+os=$(sw_vers -productName)
 osver=$(sw_vers -productVersion)
 cpu=$(sysctl -n machdep.cpu.brand_string)
 vendor=$(system_profiler SPHardwareDataType | awk -F ": " '/Model Name|Model Identifier/{print $2}' | xargs | sed 's/ /, /g')
@@ -15,7 +15,7 @@ if [ -z "$ip" ]; then
 fi
 
 mac=$(ifconfig en0 | awk "/ether/{print $2}")
-if [ -z "mac" ]; then
+if [ -z "$mac" ]; then
 	mac="Not available"
 fi
 
